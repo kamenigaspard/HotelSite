@@ -279,12 +279,28 @@ body[data-theme="dark"] .hero {
 .card,
 .service-item,
 .room-card,
-.form-wrapper {
+.form-wrapper,
+.payment-screen {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 2rem;
   box-shadow: 0 18px 45px rgba(16, 50, 95, 0.06);
+}
+
+.payment-screen {
+  animation: fadeInSlide 0.25s ease both;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card-compact {
@@ -461,9 +477,19 @@ textarea {
     display: inline-flex;
   }
 
-  /* Hide the mobile nav by default and show it when open. */
-  .nav-links {
+  #mobileNavToggle {
+    animation: bounce 1.5s infinite ease-in-out;
+  }
+
+  body.nav-open #mobileNavToggle {
     display: none;
+  }
+
+  /* Hide the mobile nav by default and animate it into view when open. */
+  .nav-links {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(20px);
     position: fixed;
     top: 0;
     right: 0;
@@ -477,10 +503,15 @@ textarea {
     background: var(--surface);
     border-left: 1px solid var(--border);
     z-index: 30;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
   }
 
   .nav-links.open {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
   }
 
   /* Semi-transparent backdrop shown while the mobile menu is open. */
@@ -490,6 +521,21 @@ textarea {
     inset: 0;
     background: rgba(22, 43, 74, 0.35);
     z-index: 20;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-4px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(-2px);
+    }
   }
 
   .hero {

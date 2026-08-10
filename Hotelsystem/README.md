@@ -14,7 +14,8 @@ Hotel Serenity is a small hotel landing site with a reservation workflow that he
 ### Navigation
 - Fixed header navigation with links to Home, Rooms, and Reservation pages.
 - Mobile menu toggle button shows or hides the navigation panel on small screens.
-- The mobile toggle is aligned at the top-right corner for better usability.
+- The mobile toggle animates smoothly when opening and closing the mobile nav.
+- The mobile menu closes cleanly when the user taps outside the panel.
 
 ### Language Support
 - English and French translations are managed in `app.js`.
@@ -33,6 +34,8 @@ Hotel Serenity is a small hotel landing site with a reservation workflow that he
 - The reservation form collects guest name, email, phone, room choice, arrival/departure dates, and special requests.
 - A deposit percentage selector allows the guest to choose either 20% or 30% of the selected room price.
 - The app calculates the required deposit amount for the chosen room and displays it.
+- When the user clicks Confirm Booking, the form is hidden and the payment section is shown via an alert prompt.
+- Clicking Pay or Decline displays a payment message, then returns the user to the reservation form so they can continue editing or re-submit.
 
 ### Payment Integration
 - CinetPay is integrated via the client-side script `https://cdn.cinetpay.com/seamless/main.js`.

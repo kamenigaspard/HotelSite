@@ -90,27 +90,35 @@
           </div>
 
           <!--
-            Payment section is hidden initially. It becomes visible after the
-            user submits the form (first step). The user can then choose to pay
-            the deposit now or decline. If payment succeeds we POST the form to
-            Formspree; otherwise the booking is not submitted.
+            Payment confirmation screen is hidden initially. After the user
+            submits the form, this screen prompts them to pay the deposit or
+            decline and return to the booking form.
           -->
-          <div id="paymentSection" class="card" style="display:none; grid-column: 1 / -1;">
-            <h3>Deposit Payment</h3>
-            <p id="paymentSummary">Review your deposit before paying.</p>
-            <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
-              <button id="payButton" type="button" class="button-primary">Pay Deposit</button>
-              <button id="declineButton" type="button" class="btn">Decline</button>
-            </div>
-            <small class="status-message" id="paymentMessage"></small>
-          </div>
-
           <div class="form-actions" style="grid-column: 1 / -1;">
             <button class="button-primary" data-i18n="reservation.submitButton" type="submit">Confirm Booking</button>
             <small data-i18n="reservation.noteText">We will review your booking and contact you with confirmation details.</small>
             <p class="status-message" id="status"></p>
           </div>
         </form>
+
+        <div id="paymentConfirmationScreen" class="card payment-screen" style="display:none; margin-top: 1.5rem;">
+          <h3>Confirm Deposit Payment</h3>
+          <p id="paymentSummary">Review your deposit before paying.</p>
+          <div class="form-group" style="margin-top: 1rem;">
+            <label for="paymentMethod">Payment Method*</label>
+            <select id="paymentMethod" required>
+              <option value="">Choose payment method</option>
+              <option value="mtn">MTN</option>
+              <option value="orange">Orange</option>
+              <option value="bankcard">Bank Card</option>
+            </select>
+          </div>
+          <div style="display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap: wrap;">
+            <button id="payButton" type="button" class="button-primary">Confirm Pay</button>
+            <button id="declineButton" type="button" class="btn">Decline</button>
+          </div>
+          <small class="status-message" id="paymentMessage"></small>
+        </div>
       </div>
     </div>
   </main>

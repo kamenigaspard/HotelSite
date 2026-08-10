@@ -1,9 +1,9 @@
-// Translation table for English and French.
+ // Translation table for English and French.
 // Each top-level language object contains page-specific text keys.
 const translations = {
   en: {
     common: {
-      brand: 'Hotel Serenity',
+      brand: 'Hotel',
       home: 'Home',
       rooms: 'Rooms',
       reservation: 'Reservation',
@@ -13,7 +13,7 @@ const translations = {
     index: {
       eyebrow: 'Discover premium comfort in Douala',
       heroTitle: 'Stay in stylish rooms with modern service and thoughtful amenities.',
-      heroText: 'Hotel Serenity offers free Wi-Fi, a restaurant, pool access, and 24/7 guest care to make every stay memorable.',
+      heroText: 'Hotel offers free Wi-Fi, a restaurant, pool access, and 24/7 guest care to make every stay memorable.',
       viewRooms: 'View Rooms',
       learnMore: 'Learn More',
       aboutTitle: 'About Our Hotel',
@@ -32,7 +32,7 @@ const translations = {
       restaurantText: 'Savor delicious meals prepared daily with local and international flavors in a relaxed atmosphere.',
       guestCareTitle: '24/7 Guest Care',
       guestCareText: 'Reception and support are available around the clock to help with requests and travel plans.',
-      footer: '© 2026 Hotel Serenity. Stylish stays in Douala.'
+      footer: '© 2026 Hotel. Stylish stays in Douala.'
     },
     rooms: {
       pageTitle: 'Our Rooms & Suites',
@@ -47,7 +47,7 @@ const translations = {
       suitePrice: 'Price: 95,000 FCFA / Night',
       suiteCapacity: 'Capacity: 2-4 guests',
       bookNow: 'Book Now',
-      footer: '© 2026 Hotel Serenity. Book your stay today.'
+      footer: '© 2026 Hotel. Book your stay today.'
     },
     reservation: {
       pageTitle: 'Book Your Stay',
@@ -70,12 +70,12 @@ const translations = {
       statusPaymentUnavailable: 'Payment service is unavailable. Please try again later.',
       statusPaymentDeclined: 'Payment was not completed. Booking request was not sent.',
       statusSuccess: 'Deposit received successfully. Your booking request has been confirmed.',
-      footer: '© 2026 Hotel Serenity. Your comfortable Douala retreat.'
+      footer: '© 2026 Hotel. Your comfortable Douala retreat.'
     }
   },
   fr: {
     common: {
-      brand: 'Hôtel Sérénité',
+      brand: 'Hôtel',
       home: 'Accueil',
       rooms: 'Chambres',
       reservation: 'Réservation',
@@ -85,7 +85,7 @@ const translations = {
     index: {
       eyebrow: 'Découvrez le confort premium à Douala',
       heroTitle: 'Séjournez dans des chambres élégantes avec un service moderne et des équipements attentionnés.',
-      heroText: 'L’Hôtel Sérénité propose Wi-Fi gratuit, restaurant, piscine et service 24h/24 pour rendre chaque séjour mémorable.',
+      heroText: 'L’Hôtel propose Wi-Fi gratuit, restaurant, piscine et service 24h/24 pour rendre chaque séjour mémorable.',
       viewRooms: 'Voir les Chambres',
       learnMore: 'En savoir plus',
       aboutTitle: 'À propos de notre hôtel',
@@ -104,7 +104,7 @@ const translations = {
       restaurantText: 'Savourez des plats délicieux préparés quotidiennement avec des saveurs locales et internationales.',
       guestCareTitle: 'Service 24h/24',
       guestCareText: 'La réception et le service d’assistance sont disponibles 24h/24 pour répondre à vos demandes et organiser vos voyages.',
-      footer: '© 2026 Hôtel Sérénité. Séjours élégants à Douala.'
+      footer: '© 2026 Hôtel. Séjours élégants à Douala.'
     },
     rooms: {
       pageTitle: 'Nos Chambres & Suites',
@@ -119,7 +119,7 @@ const translations = {
       suitePrice: 'Prix : 95 000 FCFA / Nuit',
       suiteCapacity: 'Capacité : 2-4 personnes',
       bookNow: 'Réserver',
-      footer: '© 2026 Hôtel Sérénité. Réservez votre séjour aujourd’hui.'
+      footer: '© 2026 Hôtel. Réservez votre séjour aujourd’hui.'
     },
     reservation: {
       pageTitle: 'Réservez votre séjour',
@@ -142,7 +142,7 @@ const translations = {
       statusPaymentUnavailable: 'Le service de paiement est indisponible. Veuillez réessayer plus tard.',
       statusPaymentDeclined: 'Le paiement n’a pas été complété. La réservation n’a pas été envoyée.',
       statusSuccess: 'Acompte reçu avec succès. Votre demande de réservation est confirmée.',
-      footer: '© 2026 Hôtel Sérénité. Votre retraite confortable à Douala.'
+      footer: '© 2026 Hôtel. Votre retraite confortable à Douala.'
     }
   }
 };
@@ -433,8 +433,8 @@ window.addEventListener('DOMContentLoaded', () => {
     /*
       Reservation submit handler (first step):
       - Validates the form fields and deposit selection.
-      - If valid, shows the `#paymentSection` so the user can choose to pay
-        the deposit now or decline.
+      - If valid, shows the `#paymentConfirmationScreen` so the user can choose
+        to pay the deposit now or decline.
       - Actual payment is performed only when the user clicks the Pay button.
     */
     form.addEventListener('submit', (event) => {
@@ -456,15 +456,19 @@ window.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Calculate deposit and reveal the payment UI for user action.
       const depositAmount = calculateDepositAmount();
-      const paymentSection = document.getElementById('paymentSection');
+      const paymentScreen = document.getElementById('paymentConfirmationScreen');
       const paymentSummary = document.getElementById('paymentSummary');
       const paymentMessage = document.getElementById('paymentMessage');
+      const paymentMethodSelect = document.getElementById('paymentMethod');
 
-      paymentSummary.textContent = `Deposit required: ${formatCurrency(depositAmount)} — you may pay now or decline.`;
+      paymentSummary.textContent = `Deposit required: ${formatCurrency(depositAmount)} — please confirm payment or decline.`;
       paymentMessage.textContent = '';
-      if (paymentSection) paymentSection.style.display = 'block';
+      if (paymentScreen) {
+        paymentScreen.style.display = 'block';
+      }
+
+      form.style.display = 'none';
 
       // Focus the Pay button for convenience.
       const payButton = document.getElementById('payButton');
@@ -475,18 +479,20 @@ window.addEventListener('DOMContentLoaded', () => {
     const payButton = document.getElementById('payButton');
     const declineButton = document.getElementById('declineButton');
     const paymentMessage = document.getElementById('paymentMessage');
+    const paymentMethodSelect = document.getElementById('paymentMethod');
 
     if (declineButton) {
-      // If user declines, hide payment UI and show a message; they can edit the form again.
+      // If user declines, hide the confirmation screen and return to the booking form.
       declineButton.addEventListener('click', () => {
-        const paymentSection = document.getElementById('paymentSection');
-        if (paymentSection) paymentSection.style.display = 'none';
+        const paymentScreen = document.getElementById('paymentConfirmationScreen');
+        if (paymentScreen) paymentScreen.style.display = 'none';
         if (paymentMessage) {
-          paymentMessage.textContent = 'You declined to pay the deposit. Booking not submitted.';
+          paymentMessage.textContent = 'Payment was declined. You can revise your booking details.';
           paymentMessage.style.color = 'var(--muted)';
         }
-        status.textContent = 'Booking not submitted.';
+        status.textContent = 'Payment declined. Booking not submitted.';
         status.style.color = 'var(--muted)';
+        form.style.display = '';
       });
     }
 
@@ -494,16 +500,27 @@ window.addEventListener('DOMContentLoaded', () => {
       payButton.addEventListener('click', async () => {
         const currentLang = localStorage.getItem('hotelLang') || 'en';
         const depositAmount = calculateDepositAmount();
+        const selectedPaymentMethod = paymentMethodSelect ? paymentMethodSelect.value : '';
 
-        // Disable the button until submission finishes to prevent duplicates.
+        if (!selectedPaymentMethod) {
+          if (paymentMessage) {
+            paymentMessage.textContent = 'Please select a payment method before confirming payment.';
+            paymentMessage.style.color = 'var(--danger)';
+          }
+          return;
+        }
+
         payButton.disabled = true;
         if (paymentMessage) {
-          paymentMessage.textContent = `Submitting booking for ${formatCurrency(depositAmount)} deposit...`;
+          paymentMessage.textContent = `Processing ${selectedPaymentMethod.toUpperCase()} payment of ${formatCurrency(depositAmount)}...`;
           paymentMessage.style.color = 'var(--accent)';
         }
 
         try {
           const formData = new FormData(form);
+          if (paymentMethodSelect) {
+            formData.append('paymentMethod', selectedPaymentMethod);
+          }
           const resp = await fetch(form.action, {
             method: 'POST',
             body: formData,
@@ -513,23 +530,31 @@ window.addEventListener('DOMContentLoaded', () => {
           if (resp.ok) {
             status.textContent = t('reservation.statusSuccess', currentLang);
             status.style.color = 'var(--accent)';
+            if (paymentMessage) {
+              paymentMessage.textContent = 'Payment completed successfully. Booking request submitted.';
+              paymentMessage.style.color = 'var(--accent)';
+            }
             form.reset();
             updateDepositDisplay();
-            const paymentSection = document.getElementById('paymentSection');
-            if (paymentSection) paymentSection.style.display = 'none';
-            if (paymentMessage) paymentMessage.textContent = 'Booking submitted successfully.';
           } else {
             if (paymentMessage) {
-              paymentMessage.textContent = 'Booking submission failed. Please try again or contact support.';
+              paymentMessage.textContent = 'Payment failed. Please try again.';
               paymentMessage.style.color = 'var(--danger)';
             }
+            status.textContent = t('reservation.statusPaymentDeclined', currentLang);
+            status.style.color = 'var(--danger)';
           }
         } catch (err) {
           if (paymentMessage) {
-            paymentMessage.textContent = 'Network error while submitting booking.';
+            paymentMessage.textContent = 'Network error during payment. Please try again.';
             paymentMessage.style.color = 'var(--danger)';
           }
+          status.textContent = t('reservation.statusPaymentUnavailable', currentLang);
+          status.style.color = 'var(--danger)';
         } finally {
+          const paymentScreen = document.getElementById('paymentConfirmationScreen');
+          if (paymentScreen) paymentScreen.style.display = 'none';
+          form.style.display = '';
           payButton.disabled = false;
         }
       });
