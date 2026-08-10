@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Serenity</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="index">
+  <header class="site-header">
+    <div class="container site-nav">
+      <a class="brand" data-i18n="common.brand" href="index.html">Hotel Serenity</a>
+      <div class="header-actions">       
+        <button id="mobileNavToggle" class="icon-button mobile-only" aria-label="Open navigation">☰</button>
+        <nav class="nav-links">
+            <button id="mobileNavClose" class="icon-button nav-close-button mobile-only" aria-label="Close navigation">✕</button>
+            <a data-i18n="common.home" href="index.html">Home</a>
+          <a data-i18n="common.rooms" href="rooms.html">Rooms</a>
+          <a data-i18n="common.reservation" href="reservation.html">Reservation</a>
+        <button id="themeToggle" class="icon-button" aria-label="Toggle theme">🌙</button>
+        <div class="language-switcher">
+          <select id="languageSwitcher">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow" data-i18n="index.eyebrow">Discover premium comfort in Douala</p>
+        <h1 class="hero-title" data-i18n="index.heroTitle">Stay in stylish rooms with modern service and thoughtful amenities.</h1>
+        <p class="hero-text" data-i18n="index.heroText">Hotel Serenity offers free Wi-Fi, a restaurant, pool access, and 24/7 guest care to make every stay memorable.</p>
+        <div class="hero-actions">
+          <a class="button-primary" data-i18n="index.viewRooms" href="rooms.html">View Rooms</a>
+          <a class="btn" data-i18n="index.learnMore" href="#about">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title" data-i18n="index.aboutTitle">About Our Hotel</h2>
+        <p class="section-subtitle" data-i18n="index.aboutText">A modern hotel located in Douala with premium services, comfortable rooms, and exceptional hospitality.</p>
+        <div class="card-grid">
+          <div class="card card-compact">
+            <h3 data-i18n="index.comfortTitle">Comfort & Convenience</h3>
+            <p data-i18n="index.comfortText">Enjoy elegantly appointed rooms, free Wi-Fi, secure parking, and a welcoming environment for business or leisure stays.</p>
+          </div>
+          <div class="card card-compact">
+            <h3 data-i18n="index.diningTitle">Dining & Relaxation</h3>
+            <p data-i18n="index.diningText">Relax in our restaurant, swim in the outdoor pool, and unwind with attentive service any time of day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="section-title" data-i18n="index.servicesTitle">Hotel Services</h2>
+        <p class="section-subtitle" data-i18n="index.servicesText">Everything you need for a comfortable stay, delivered with warm hospitality and modern style.</p>
+        <div class="card-grid">
+          <div class="service-item">
+            <h3 data-i18n="index.wifiTitle">Free Wi-Fi</h3>
+            <p data-i18n="index.wifiText">High-speed internet is available throughout the hotel for work, entertainment, and staying connected.</p>
+          </div>
+          <div class="service-item">
+            <h3 data-i18n="index.poolTitle">Pool & Wellness</h3>
+            <p data-i18n="index.poolText">Enjoy a refreshing swim or relax by the pool after a long day of meetings or sightseeing.</p>
+          </div>
+          <div class="service-item">
+            <h3 data-i18n="index.restaurantTitle">Restaurant</h3>
+            <p data-i18n="index.restaurantText">Savor delicious meals prepared daily with local and international flavors in a relaxed atmosphere.</p>
+          </div>
+          <div class="service-item">
+            <h3 data-i18n="index.guestCareTitle">24/7 Guest Care</h3>
+            <p data-i18n="index.guestCareText">Reception and support are available around the clock to help with requests and travel plans.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="index.footer">© 2026 Hotel Serenity. Stylish stays in Douala.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Rooms | Hotel Serenity</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="rooms">
+  <header class="site-header">
+    <div class="container site-nav">
+      <a class="brand" data-i18n="common.brand" href="index.html">Hotel Serenity</a>
+      <div class="header-actions">       
+        <button id="mobileNavToggle" class="icon-button mobile-only" aria-label="Open navigation">☰</button>
+        <nav class="nav-links">
+            <button id="mobileNavClose" class="icon-button nav-close-button mobile-only" aria-label="Close navigation">✕</button>
+            <a data-i18n="common.home" href="index.html">Home</a>
+          <a data-i18n="common.rooms" href="rooms.html">Rooms</a>
+          <a data-i18n="common.reservation" href="reservation.html">Reservation</a>
+        <button id="themeToggle" class="icon-button" aria-label="Toggle theme">🌙</button>
+        <div class="language-switcher">
+          <select id="languageSwitcher">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title" data-i18n="rooms.pageTitle">Our Rooms & Suites</h1>
+      <p class="section-subtitle" data-i18n="rooms.pageSubtitle">Choose the room that fits your travel style. Each suite offers premium comfort and thoughtful amenities.</p>
+
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-photo" style="background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80');"></div>
+          <h3 data-i18n="rooms.simpleRoom">Simple Room</h3>
+          <p data-i18n="rooms.simplePrice">Price: 45,000 FCFA / Night</p>
+          <p data-i18n="rooms.simpleCapacity">Capacity: 1-2 guests</p>
+          <a class="btn" data-i18n="rooms.bookNow" href="reservation.html?room=Simple%20Room">Book Now</a>
+        </div>
+
+        <div class="room-card">
+          <div class="room-photo" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80');"></div>
+          <h3 data-i18n="rooms.doubleRoom">Double Room</h3>
+          <p data-i18n="rooms.doublePrice">Price: 65,000 FCFA / Night</p>
+          <p data-i18n="rooms.doubleCapacity">Capacity: 2-3 guests</p>
+          <a class="btn" data-i18n="rooms.bookNow" href="reservation.html?room=Double%20Room">Book Now</a>
+        </div>
+
+        <div class="room-card">
+          <div class="room-photo" style="background-image: url('https://images.unsplash.com/photo-1560448068-652ce1f4a9be?auto=format&fit=crop&w=1200&q=80');"></div>
+          <h3 data-i18n="rooms.suite">Suite</h3>
+          <p data-i18n="rooms.suitePrice">Price: 95,000 FCFA / Night</p>
+          <p data-i18n="rooms.suiteCapacity">Capacity: 2-4 guests</p>
+          <a class="btn" data-i18n="rooms.bookNow" href="reservation.html?room=Suite">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="rooms.footer">© 2026 Hotel Serenity. Book your stay today.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

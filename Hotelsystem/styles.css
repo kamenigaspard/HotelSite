@@ -1,0 +1,499 @@
+﻿/* Theme variables define the default color palette and surface tones. */
+:root {
+  --bg: #f5f9ff;
+  --surface: #ffffff;
+  --surface-alt: #eef5ff;
+  --surface-soft: rgba(59, 130, 246, 0.12);
+  --text: #162b4a;
+  --muted: #5a6986;
+  --accent: #2563eb;
+  --accent-strong: #f59e0b;
+  --danger: #dc2626;
+  --border: rgba(37, 99, 235, 0.18);
+}
+
+/* Dark theme color overrides when the body has data-theme="dark". */
+body[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #111827;
+  --surface-alt: #1f2937;
+  --surface-soft: rgba(255, 255, 255, 0.06);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #60a5fa;
+  --accent-strong: #fbbf24;
+  --danger: #f87171;
+  --border: rgba(148, 163, 184, 0.24);
+}
+
+/* Global reset for box sizing. */
+* {
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling behavior when navigating on the page. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base body styling with theme-aware background and text color. */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Light-mode gradient background styling. */
+body[data-theme="light"] {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 28%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+}
+
+/* Dark-mode gradient background styling. */
+body[data-theme="dark"] {
+  background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.12), transparent 28%),
+    linear-gradient(180deg, #0b1125 0%, #111827 100%);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: min(1140px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+/* Navigation link container for desktop and mobile layouts. */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Base link styling inside the nav area. */
+.nav-links a {
+  padding-top: 10px;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+/* Hover and focus state for improved accessibility. */
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--accent);
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-alt);
+  padding: 0.35rem 0.55rem;
+}
+
+.language-switcher select {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.95rem;
+  padding: 0.25rem 0.35rem;
+  outline: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icon-button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.icon-button:hover,
+.icon-button:focus {
+  border-color: var(--accent);
+}
+
+.mobile-only {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-close-button {
+  align-self: flex-end;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  padding: 0.75rem 0.9rem;
+}
+
+.hero {
+  min-height: calc(100vh - 88px);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
+    url('https://images.unsplash.com/photo-1501117716987-c8e6f542bffc?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  padding: 5rem 0;
+}
+
+body[data-theme="dark"] .hero {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.92)),
+    url('https://images.unsplash.com/photo-1501117716987-c8e6f542bffc?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+}
+
+.hero-content {
+  max-width: 700px;
+  text-align: left;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+  line-height: 1.02;
+}
+
+.hero-text {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.btn,
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 0.95rem 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--accent);
+}
+
+.btn:hover,
+.button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.18);
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  max-width: 680px;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card,
+.service-item,
+.room-card,
+.form-wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 18px 45px rgba(16, 50, 95, 0.06);
+}
+
+.card-compact {
+  display: grid;
+  gap: 1rem;
+}
+
+.service-list,
+.room-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.service-item h3,
+.room-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.service-item p,
+.room-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.room-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.room-card {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 220px 1fr auto;
+}
+
+.room-photo {
+  min-height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.room-card h3 {
+  margin: 1rem 0 0.5rem;
+}
+
+.room-card p {
+  margin: 0.35rem 0;
+}
+
+.room-card .btn {
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+.footer {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid rgba(37, 99, 235, 0.12);
+  color: var(--muted);
+  text-align: center;
+}
+
+.footer a {
+  color: var(--accent);
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+label {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  background: #f8fbff;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 16px;
+  color: var(--text);
+  padding: 0.95rem 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.form-actions small {
+  color: var(--muted);
+}
+
+.status-message {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+@media (min-width: 760px) {
+  .icon-button{
+    display: none;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-actions {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .room-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  /* Mobile layout adjustments for the header and navigation. */
+  .site-nav {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Place the mobile nav toggle in the top-right corner. */
+  #mobileNavToggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 40;
+  }
+
+  /* Ensure header actions stay aligned to the right on mobile. */
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .mobile-only {
+    display: inline-flex;
+  }
+
+  /* Hide the mobile nav by default and show it when open. */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(280px, 80vw);
+    padding: 5rem 1.5rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    z-index: 30;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Semi-transparent backdrop shown while the mobile menu is open. */
+  body.nav-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(22, 43, 74, 0.35);
+    z-index: 20;
+  }
+
+  .hero {
+    min-height: 70vh;
+    padding: 4rem 0;
+  }
+}

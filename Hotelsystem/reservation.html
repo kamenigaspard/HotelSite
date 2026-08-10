@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation | Hotel Serenity</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="reservation">
+  <header class="site-header">
+    <div class="container site-nav">
+      <a class="brand" data-i18n="common.brand" href="index.html">Hotel Serenity</a>
+      <div class="header-actions">       
+        <button id="mobileNavToggle" class="icon-button mobile-only" aria-label="Open navigation">☰</button>
+        <nav class="nav-links">
+            <button id="mobileNavClose" class="icon-button nav-close-button mobile-only" aria-label="Close navigation">✕</button>
+            <a data-i18n="common.home" href="index.html">Home</a>
+          <a data-i18n="common.rooms" href="rooms.html">Rooms</a>
+          <a data-i18n="common.reservation" href="reservation.html">Reservation</a>
+        <button id="themeToggle" class="icon-button" aria-label="Toggle theme">🌙</button>
+        <div class="language-switcher">
+          <select id="languageSwitcher">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title" data-i18n="reservation.pageTitle">Book Your Stay</h1>
+      <p class="section-subtitle" data-i18n="reservation.pageSubtitle">Reserve a room with ease and let us handle the rest. Complete the form below to request your booking.</p>
+
+      <div class="form-wrapper">
+        <form   action="https://formspree.io/f/mojgodkb" method="post" id="bookingForm" class="form-grid" novalidate>
+          <div class="form-group">
+            <label for="fullName" data-i18n="reservation.fullNameLabel">Full Name*</label>
+            <input id="fullName" name="fullName" type="text" data-i18n-placeholder="reservation.fullNamePlaceholder" placeholder="John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email" data-i18n="reservation.emailLabel">Email*</label>
+            <input id="email" name="email" type="email" data-i18n-placeholder="reservation.emailPlaceholder" placeholder="name@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone" data-i18n="reservation.phoneLabel">Phone Number*</label>
+            <input id="phone" name="phone" type="tel" data-i18n-placeholder="reservation.phonePlaceholder" placeholder="+237 699 123 456" required>
+          </div>
+
+          <div class="form-group">
+            <label for="room-select" data-i18n="reservation.roomLabel">Preferred Room*</label>
+            <select id="room-select" name="roomType" required>
+              <option value="Simple Room" data-i18n="rooms.simpleRoom">Simple Room</option>
+              <option value="Double Room" data-i18n="rooms.doubleRoom">Double Room</option>
+              <option value="Suite" data-i18n="rooms.suite">Suite</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="arrivalDate" data-i18n="reservation.arrivalLabel">Arrival Date*</label>
+            <input id="arrivalDate" name="arrivalDate" type="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="departureDate" data-i18n="reservation.departureLabel">Departure Date*</label>
+            <input id="departureDate" name="departureDate" type="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="depositPercent">Deposit Percent*</label>
+            <select id="depositPercent" name="depositPercent" required>
+              <option value="">Select deposit percent</option>
+              <option value="20">20%</option>
+              <option value="30">30%</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Deposit to Pay</label>
+            <p id="depositAmountPreview" class="status-message">Select room and deposit percent to calculate.</p>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label for="specialRequest" data-i18n="reservation.requestLabel">Special Requests</label>
+            <textarea id="specialRequest" name="specialRequest" data-i18n-placeholder="reservation.requestPlaceholder" placeholder="Any food, accessibility, or room preferences?" rows="5"></textarea>
+          </div>
+
+          <!--
+            Payment section is hidden initially. It becomes visible after the
+            user submits the form (first step). The user can then choose to pay
+            the deposit now or decline. If payment succeeds we POST the form to
+            Formspree; otherwise the booking is not submitted.
+          -->
+          <div id="paymentSection" class="card" style="display:none; grid-column: 1 / -1;">
+            <h3>Deposit Payment</h3>
+            <p id="paymentSummary">Review your deposit before paying.</p>
+            <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
+              <button id="payButton" type="button" class="button-primary">Pay Deposit</button>
+              <button id="declineButton" type="button" class="btn">Decline</button>
+            </div>
+            <small class="status-message" id="paymentMessage"></small>
+          </div>
+
+          <div class="form-actions" style="grid-column: 1 / -1;">
+            <button class="button-primary" data-i18n="reservation.submitButton" type="submit">Confirm Booking</button>
+            <small data-i18n="reservation.noteText">We will review your booking and contact you with confirmation details.</small>
+            <p class="status-message" id="status"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="reservation.footer">© 2026 Hotel Serenity. Your comfortable Douala retreat.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
